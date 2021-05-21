@@ -8,12 +8,6 @@ export class Class extends Component {
            monsters : [],
            searchField : ''
        };
-       /*dot bind is a method on any function that returns a new function where the
-        context of 'this' is set to whatever we passed to it and the context of 'this' that 
-        we're setting in handle change right here is the 'this' keyword that is defined inside 
-        of our constructor which knows that it's our component*/
-
-       this.handleChange = this.handleChange.bind(this)
        
    }
 
@@ -25,8 +19,17 @@ export class Class extends Component {
        .then(users=>this.setState({monsters:users}))
 
    }
+    /*no need to bind ' this' in oour contructor any more
 
-   handleChange(e){
+     arrow functions automatically allow you to set this when this thing is defined.
+
+    So when our component is getting run by javascript for the first time and it's like oh I got to instantiate
+
+    this new app class it checks inside and it sees that there's this handle change method that points to
+
+    an arrow function.*/
+
+   handleChange= (e)=>{
 
         this.setState({searchField:e.target.value.toLowerCase()})
 
