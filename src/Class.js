@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Namelist from './components/card-list/Clist'
-
+import SearchBox from './components/search-box-component/SearchBoxCcomponent'
 export class Class extends Component {
    constructor(){
        super();
@@ -28,13 +28,12 @@ export class Class extends Component {
 
         return (
             <div>
-                <input 
-                    type = "search" 
+
+                <SearchBox 
                     placeholder="Search Monsters" 
-                    onChange={e=>{
-                        this.setState({searchField:e.target.value.toLowerCase()})
-                        }}
-                ></input>
+                    handleChange={e=>{this.setState({searchField:e.target.value.toLowerCase()})}}>
+                </SearchBox>
+
                 <Namelist key = {this.state.monsters.id} monsters = {filteredMonsters} >
 
                 </Namelist>
