@@ -8,6 +8,12 @@ export class Class extends Component {
            monsters : [],
            searchField : ''
        };
+       /*dot bind is a method on any function that returns a new function where the
+        context of 'this' is set to whatever we passed to it and the context of 'this' that 
+        we're setting in handle change right here is the 'this' keyword that is defined inside 
+        of our constructor which knows that it's our component*/
+
+       this.handleChange = this.handleChange.bind(this)
        
    }
 
@@ -17,6 +23,12 @@ export class Class extends Component {
        fetch('https://jsonplaceholder.typicode.com/users')
        .then(response=>response.json())
        .then(users=>this.setState({monsters:users}))
+
+   }
+
+   handleChange(e){
+
+        this.setState({searchField:e.target.value.toLowerCase()})
 
    }
 
@@ -31,7 +43,7 @@ export class Class extends Component {
 
                 <SearchBox 
                     placeholder="Search Monsters" 
-                    handleChange={e=>{this.setState({searchField:e.target.value.toLowerCase()})}}>
+                    handleChange={this.handleChange}>
                 </SearchBox>
 
                 <Namelist key = {this.state.monsters.id} monsters = {filteredMonsters} >
