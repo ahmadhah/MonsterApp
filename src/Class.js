@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Namelist from './components/card-list/Clist'
 import SearchBox from './components/search-box-component/SearchBoxCcomponent'
+
 export class Class extends Component {
    constructor(){
        super();
@@ -8,7 +9,7 @@ export class Class extends Component {
            monsters : [],
            searchField : ''
        };
-       
+ 
    }
 
 
@@ -28,6 +29,7 @@ export class Class extends Component {
     this new app class it checks inside and it sees that there's this handle change method that points to
 
     an arrow function.*/
+    
 
    handleChange= (e)=>{
 
